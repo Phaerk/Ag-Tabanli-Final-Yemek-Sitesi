@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyApplication</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css?v=@DateTime.Now.Ticks" />
+    <style>
+        .navbar-brand,
+        .nav-link {
+            font-size: 1rem; /* Default font size */
+        }
+
+        .welcome-username {
+            font-size: 1.25rem; /* Larger font size for the username */
+            text-align: right; /* Align to the right */
+            margin-left: 50px; /* Add some margin to the right */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Delicious Food Recipes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Privacy", "Home")">Privacy</a>
+                        </li>
+                       
+                        <a class="nav-link">
+                            <span class="welcome-username">Welcome @ViewData["userName"]</span>
+                        </a>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ListFavorites", "Favorites")" class="btn btn-primary">My Favorites</a>
+
+                        </li>
+
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main role="main" class="container my-4">
+        @RenderBody()
+    </main>
+    <footer class="bg-dark text-white py-3 mt-4">
+        <div class="container text-center">
+            <p>
+                &copy; @DateTime.Now.Year - Delicious Food Recipes
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

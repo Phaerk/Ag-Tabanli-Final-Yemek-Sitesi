@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" /> <!-- Ensure site.css is included -->
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg" style="max-width: 400px; width: 100%;">
+            <div class="card-header bg-primary text-white text-center">
+                <h4>Sign In</h4>
+            </div>
+            <div class="card-body p-4">
+                <form asp-controller="Start" asp-action="Singin" method="post">
+                    <!-- Email Input -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input class="form-control" type="text" id="email" placeholder="Enter your email" required name="email" />
+                    </div>
+                    <!-- Password Input -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" type="password" id="password" placeholder="Enter your password" required name="key" />
+                    </div>
+                    <!-- Sign In Button -->
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+                    </div>
+
+                    <!-- Error Message -->
+                    @if (ViewData["Message"] != null)
+                    {
+                        <div class="alert alert-danger mt-3" role="alert">
+                            @ViewData["Message"]
+                        </div>
+                    }
+
+                    <!-- Sign Up Link -->
+                    <div class="text-center mt-3">
+                        <span>New user? </span><a href="@Url.Action("Register", "Start")">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

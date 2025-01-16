@@ -1,0 +1,130 @@
+﻿@model Delicious_Food_Recipes.Models.User;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" /> <!-- Ahşap kahverengi arkaplanı kullanmak için site.css -->
+    <style>
+        /* Card Customization */
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Hafif saydam beyaz */
+            border: 1px solid #8b5a2b; /* Ahşap tonlarıyla uyumlu kahverengi */
+            margin: auto; /* Kartı ortalar */
+            max-width: 500px; /* Maksimum genişlik sınırlaması */
+           
+        }
+
+       
+        .card-header {
+            background-color: #8b5a2b; /* Koyu kahverengi */
+            color: #ffffff; /* Beyaz yazı */
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #a0522d; /* Sıcak kahverengi */
+            border-color: #8b4513; /* Daha koyu kahverengi */
+        }
+
+            .btn-primary:hover {
+                background-color: #8b4513; /* Hover için koyu ton */
+            }
+
+        .form-label {
+            color: #5a3e2b; /* Sıcak ahşap uyumlu yazı rengi */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 10%;
+        }
+
+        .alert {
+            background-color: #8b4513; /* Kırmızı ama yarı saydam */
+            color: #ffffff;
+            border: none;
+        }
+
+        a {
+            color: #a0522d;
+        }
+
+        .text-custom {
+            color: #6c757d; /* İstediğiniz renk kodunu buraya yazabilirsiniz */
+        }
+
+        a:hover {
+            color: #8b4513;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 pt-5 ">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-6 col-md-8">
+
+                <div class="card shadow-lg">
+                    <div class="card-header text-center">
+                        <h4>Register</h4>
+                    </div>
+                    <div class="card-body p-4">
+
+                        <form asp-controller="Start" asp-action="Register" method="post">
+
+                            <!-- Full Name Input -->
+                            <div class="mb-3">
+                                <label for="UName" class="form-label">Full Name</label>
+                                <input class="form-control" type="text" id="UName" placeholder="Enter your full name" required asp-for="UName" />
+                            </div>
+
+                            <!-- Email Input -->
+                            <div class="mb-3">
+                                <label for="UEmail" class="form-label">Email</label>
+                                <input class="form-control" type="text" id="UEmail" placeholder="Enter your email" required asp-for="UEmail" />
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="mb-3">
+                                <label for="UKey" class="form-label">Password</label>
+                                <input class="form-control" type="password" id="UKey" placeholder="Enter your password" required asp-for="UKey" />
+                            </div>
+
+                            <!-- Register Button -->
+                            <div class="d-grid">
+                                <button class="btn btn-primary btn-block" type="submit">Register</button>
+                            </div>
+
+                            <!-- Error Message -->
+                            @if (ViewData["Message"] != null)
+                            {
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    @ViewData["Message"]
+                                </div>
+                            }
+
+                            <!-- Sign In Link -->
+                            <div class="text-center mt-3">
+                                <span class="text-custom">Already have an account? </span><a href="@Url.Action("Singin", "Start")">Sign In</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

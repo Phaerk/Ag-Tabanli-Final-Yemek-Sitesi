@@ -1,0 +1,153 @@
+﻿@model Delicious_Food_Recipes.Controllers.Meal
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.StrMeal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #af7238;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #2d2013;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .img-fluid {
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .favorite-buttons {
+            position: absolute;
+            top: 90px;
+            right: 20px;
+            z-index: 10;
+        }
+
+            .favorite-buttons a {
+                margin: 5px;
+            }
+
+
+        .favorite-btn {
+            background-color: #2d2013; /* Kırmızı arka plan */
+            border: none; /* Kenarlık kaldırıldı */
+            color: #fff; /* Beyaz metin (görselde metin yoksa gereksiz) */
+            padding: 5px 10px; /* İsteğe bağlı: İç boşluk */
+            border-radius: 5px; /* Hafif yuvarlatılmış köşeler */
+            text-align: center;
+            display: inline-block;
+        }
+
+            .favorite-btn:hover {
+                background-color: #000000; /* Daha koyu kırmızı, hover efekti */
+            }
+
+
+
+        h1, h3, h4 {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #861b2d;
+            border-color: #ffffff;
+        }
+
+            .btn-primary:hover {
+                background-color: #ff0033;
+                border-color: #ff0033;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>@Model.StrMeal</h1>
+            </div>
+            <div class="card-body">
+                <div class="text-center image-container">
+                    <img src="@Model.StrMealThumb" alt="@Model.StrMeal" class="img-fluid rounded" style="max-width: 30%; height: auto;">
+                    <div class="favorite-buttons">
+                        @if ((bool)ViewBag.IsFavorite)
+                        {
+                            <a href="@Url.Action("RemoveFavorite", "Favorites", new { mealId = Model.IdMeal })" class="btn favorite-btn">
+                                <img src="~/images/remove2.png" alt="Remove" style="width: 70px; height: 70px;" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("AddFavorite", "Favorites", new { mealId = Model.IdMeal, mealImgUrl = Model.StrMealThumb, mealName = Model.StrMeal })" class="btn favorite-btn">
+                                <img src="~/images/add3.png" alt="Add" style="width: 70px; height: 70px;" />
+                            </a>
+                        }
+                    </div>
+
+                </div>
+
+                <p class="text-center"><strong>Category:</strong> @Model.StrCategory | <strong>Area:</strong> @Model.StrArea</p>
+
+                <h3 class="mt-4" style=" color: black">Recipe:</h3>
+                <p>@Model.StrInstructions</p>
+
+                @if (!string.IsNullOrEmpty(Model.StrYoutube))
+                {
+                    <h4 style="color: black">Video Recipe:</h4>
+                    <p><a href="@Model.StrYoutube" target="_blank" class="btn btn-primary">Watch on Youtube</a></p>
+                    
+                }
+
+
+              
+
+
+
+
+                @if (Model.Ingredients?.Any() == true)
+                {
+                    <h4 class="mt-4" style="color: black">Ingredients:</h4>
+                    <ul>
+                        @foreach (var ingredient in Model.Ingredients)
+                        {
+                            <li>@ingredient</li>
+                        }
+                    </ul>
+                }
+            </div>
+            <div class="card-footer text-center">
+                <a href="javascript:history.back()" class="btn btn-secondary" >Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

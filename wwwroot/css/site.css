@@ -1,0 +1,50 @@
+﻿/* Genel ayarlar */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #412310;
+    background-image: url('/images/background8.jpg'); /* Görsel yolunu ayarlayın */
+    background-size: cover; /* Sayfanın tamamını kaplayacak şekilde ölçekle */
+    background-repeat: no-repeat; /* Görselin tekrar etmesini engelle */
+    background-position: center; /* Görseli merkeze hizala */
+    background-attachment: fixed; /* Scroll ile kaymadan sabit kalır */
+    color: #ffffff; /* Yazılar için beyaz renk (isteğe bağlı) */
+}
+
+/* Navbar özel stilleri */
+.navbar-custom {
+    background-image: url('/images/background9.jpg'); /* Arka plan resmi */
+    background-size: cover; /* Resmi kapsayacak şekilde ölçeklendir */
+    background-repeat: no-repeat; /* Resmin tekrar etmesini engelle */
+    background-position: center; /* Resmi merkeze yerleştir */
+    color: #ffffff; /* Yazılar için beyaz renk */
+}
+
+    .navbar-custom .nav-link {
+        color: #ffffff !important; /* Link yazı rengi */
+    }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffd700 !important; /* Link üzerine gelindiğinde altın sarısı */
+        }
+
+    .navbar-custom .navbar-brand {
+        color: #ffffff !important; /* Marka yazısı rengi */
+    }
+
+    .navbar-custom .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
